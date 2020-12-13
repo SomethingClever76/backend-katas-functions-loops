@@ -22,9 +22,9 @@ def multiply(x, y):
     # total acts as an accumulator
     total = 0
 
-    # for x, y - find the higher abs() value:
+    # For x, y - find the higher abs() value:
     # then use the add() function abs(higher number) of times
-    # while subtracting abs(higher number) each time
+    # while subtracting abs(higher number) each time.
     if abs(x) > abs(y):
         for i in range(0, abs(x)):
             total -= add(abs(x), abs(y)) - abs(x)
@@ -32,11 +32,11 @@ def multiply(x, y):
         for i in range(0, abs(y)):
             total -= add(abs(x), abs(y)) - abs(y)
 
-    # determine whether total returned should be positive or negative:
-    # when both numbers are negative or both numbers are positive:
-    #   the total is always positive
-    # if one of the two numbers is negative:
-    #   the total will be negative
+    # Determine whether total returned should be positive or negative:
+    #    when both numbers are negative or both numbers are positive:
+    #        the total is always positive
+    #    if one of the two numbers is negative:
+    #        the total will be negative
     if x < 0 and y < 0 or x > 0 and y > 0:
         # print(abs(total))
         return abs(total)
@@ -56,6 +56,16 @@ def power(x, n):
     # accumulator
     total = 1
 
+    # Since we are told that n will be >= 0, we aren't concerned
+    # with negative exponentiation. Since the 0th power of any number is 1,
+    # total is initialized to a value of 1. If n is 0, we simply return that 1.
+    # Otherwise, the first iteration is (x * 1).
+    # For example power(2, 3) would start as
+    # loop_var is 0    (2 * 1)    total is now 2
+    # loop_var is 1    (2 * 2)    total is now 4
+    # loop_var is 2    (2 * 4)    total is now 8
+    # loop_var is 3, which is equal to the value of "n" in this example.
+    # loop is ended and final total is returned.
     while loop_var != n:
         total = multiply(x, total)
         # increment the loop variable
@@ -72,7 +82,31 @@ def power(x, n):
 def factorial(x):
     """Compute the factorial of x, where x > 0, using the functions above."""
     # your code here
-    return
+    # accumulator
+    total = x
+
+    # Taking factorial(4) as an example,
+    # we are not doing this - (4 * 3 * 2 * 1).
+    # Instead, we are making use of the commutative property of multiplication.
+    # i is 1    (4 * 1) is how we start   total is now 4
+    # i is 2    (4 * 2) is next           total is now 8
+    # i is 3    (8 * 3) final loop        total is now 24
+    # Since we passed in x as our stop position in the range() function,
+    # the loop stops here and the final total is 24.
+    # (Special Condition - we check whether x is 0 or 1 because the 
+    # factorial for both is 1)
+    if x == 0 or x == 1:
+        return 1
+    else:
+        for i in range(1, x):
+            total = multiply(total, i)
+
+    # when loop is complete, print/return the total
+    print(total)
+    return total
+
+
+factorial(1)
 
 
 def fibonacci(n):
