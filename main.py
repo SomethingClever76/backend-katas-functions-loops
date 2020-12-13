@@ -33,15 +33,15 @@ def multiply(x, y):
             total -= add(abs(x), abs(y)) - abs(y)
 
     # determine whether total returned should be positive or negative:
-    # if one of the two numbers is negative:
-    #   the total will be negative
     # when both numbers are negative or both numbers are positive:
     #   the total is always positive
+    # if one of the two numbers is negative:
+    #   the total will be negative
     if x < 0 and y < 0 or x > 0 and y > 0:
-        print(abs(total))
+        # print(abs(total))
         return abs(total)
     else:
-        print(total)
+        # print(total)
         return total
 
 
@@ -51,7 +51,22 @@ def multiply(x, y):
 def power(x, n):
     """Raise x to power n, where n >= 0, using the functions above."""
     # your code here
-    return
+    # loop variable used to control number of iterations
+    loop_var = 0
+    # accumulator
+    total = 1
+
+    while loop_var != n:
+        total = multiply(x, total)
+        # increment the loop variable
+        loop_var = add(loop_var, 1)
+
+    # when loop is complete, print/return the total
+    # print(total)
+    return total
+
+
+# power(2, 8)
 
 
 def factorial(x):
