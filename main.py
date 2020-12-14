@@ -93,7 +93,7 @@ def factorial(x):
     # i is 3    (8 * 3) final loop        total is now 24
     # Since we passed in x as our stop position in the range() function,
     # the loop stops here and the final total is 24.
-    # (Special Condition - we check whether x is 0 or 1 because the 
+    # (Special Condition - we check whether x is 0 or 1 because the
     # factorial for both is 1)
     if x == 0 or x == 1:
         return 1
@@ -102,17 +102,51 @@ def factorial(x):
             total = multiply(total, i)
 
     # when loop is complete, print/return the total
-    print(total)
+    # print(total)
     return total
 
 
-factorial(1)
+# factorial(4)
 
 
 def fibonacci(n):
     """Compute the nth term of fibonacci sequence using the functions above."""
     # your code here
-    return
+    # accumulator/sequence starts at 0
+    total = 0
+    # keep track of previous numbers to be added to total
+    prev1 = 0
+    prev2 = 1
+
+    # Using total_list just to make sure numbers are correct
+    # should be: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89...]
+    total_list = []
+    # if n == 1:
+    #     total = 1
+    # else:
+    #     for i in range(1, n):
+    #         total = add(prev1, prev2)
+    #         prev1 = prev2
+    #         prev2 = total
+    for i in range(n + 1):
+        total = add(total, prev1)
+        total_list.append(total)
+        prev1 = prev2
+        prev2 = total
+    print("fib list looks like:", total_list)
+    print(f"if n is {n}\n", "fib number is", total, '\n')
+    return total
+
+
+fibonacci(0)
+fibonacci(1)
+fibonacci(2)
+fibonacci(3)
+# fibonacci(4)
+# fibonacci(5)
+# fibonacci(6)
+# fibonacci(7)
+# fibonacci(8)
 
 
 if __name__ == '__main__':
