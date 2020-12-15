@@ -22,7 +22,7 @@ def multiply(x, y):
     # total acts as an accumulator
     total = 0
 
-    # For x, y - find the higher abs() value:
+    # For x, y - find the higher abs() value,
     # then use the add() function abs(higher number) of times
     # while subtracting abs(higher number) each time.
     if abs(x) > abs(y):
@@ -121,32 +121,30 @@ def fibonacci(n):
     # Using total_list just to make sure numbers are correct
     # should be: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89...]
     total_list = []
-    # if n == 1:
-    #     total = 1
-    # else:
-    #     for i in range(1, n):
-    #         total = add(prev1, prev2)
-    #         prev1 = prev2
-    #         prev2 = total
+
+    # start with 0 + 0 = 0 (the first number in the sequence)
+    # this gets appended to total_list
+    # update value of prev1 to be the current value of prev2
+    # update prev2 to be the current value of total
+    # Example: n = 5
+    # i     total   prev1   fib_num   prev1_update  prev2_update
+    # 0       0   +   0   =    0           1             0
+    # 1       0   +   1   =    1           0             1
+    # 2       1   +   0   =    1           1             1
+    # 3       1   +   1   =    2           1             2
+    # 4       2   +   1   =    3           2             3
+    # 5       3   +   2   =    5           3             5
     for i in range(n + 1):
         total = add(total, prev1)
         total_list.append(total)
         prev1 = prev2
         prev2 = total
-    print("fib list looks like:", total_list)
-    print(f"if n is {n}\n", "fib number is", total, '\n')
+    print("fib list:", total_list)
+    print(f"if n is {n},\nfib number is {total}")
     return total
 
 
-fibonacci(0)
-fibonacci(1)
-fibonacci(2)
-fibonacci(3)
-# fibonacci(4)
-# fibonacci(5)
-# fibonacci(6)
-# fibonacci(7)
-# fibonacci(8)
+fibonacci(8)
 
 
 if __name__ == '__main__':
